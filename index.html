@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panadería Dulce Hogar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #FFF5E1;
+      color: #4B2E2B;
+      font-family: 'Josefin Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navbar fija superior */
+    .navbar {
+      background-color: #D2691E;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      z-index: 1001;
+    }
+
+    .menu-btn {
+      font-size: 28px;
+      color: #FFF5E1;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .logo {
+      color: #FFF5E1;
+      font-size: 22px;
+      font-weight: bold;
+      margin-left: 20px;
+    }
+
+    /* Menú lateral oculto */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #D2691E;
+      padding-top: 60px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #FFF5E1;
+      padding: 15px 25px;
+      text-decoration: none;
+      font-size: 18px;
+      transition: 0.2s;
+    }
+
+    .sidebar a:hover {
+      background-color: #B85C1F;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .container {
+      width: 90%;
+      margin: 80px auto 0 auto;
+      padding: 20px;
+    }
+
+    .title {
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 20px;
+    }
+
+    .title a {
+      color: #D2691E;
+      text-decoration: none;
+    }
+
+    .title a:hover {
+      font-weight: bold;
+    }
+
+    .title hr {
+      width: 50%;
+      border: 1px solid #D2691E;
+    }
+
+    .list-inline {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .list-inline li {
+      display: inline-block;
+      margin: 0 10px;
+      font-size: 2rem;
+    }
+
+    .summary, .work-experience {
+      background: #FFF;
+      padding: 20px;
+      margin-top: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .summary p, .work-experience p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      letter-spacing: 0.05rem;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .experience-title {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+
+    .experience-summary {
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    h1, h2, h3, h4, h5 {
+      margin: 10px 0;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR SUPERIOR -->
+  <div class="navbar">
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+    <div class="logo">Panadería Dulce Hogar</div>
+  </div>
+
+  <!-- MENÚ LATERAL -->
+  <div class="sidebar" id="sidebar">
+    <a href="#">Inicio</a>
+    <a href="productos.html">Productos</a>
+    <a href="nosotros.html">Sobre Nosotros</a>
+    <a href="Menu_producto.html">Almacén</a>
+    <a href="contactos.html">Contacto</a>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="container">
+    <div class="title">
+      <h1>Panadería Dulce Hogar</h1>
+      <h3>Sabores que Enamoran</h3>
+      <h4><a href="#">www.dulcehogar.com</a></h4>
+      <hr />
+      <ul class="list-inline">
+        <li>🥐</li>
+        <li>🍞</li>
+        <li>🍰</li>
+        <li>🍪</li>
+        <li>☕</li>
+      </ul>
+    </div>
+
+    <div class="summary">
+      <h2 class="text-center">Sobre Nosotros</h2>
+      <p>En Panadería Dulce Hogar llevamos más de 10 años llenando tu mesa de alegría...</p>
+      <div class="text-center">
+        <p>✔ Panes rústicos y artesanales</p>
+        <p>✔ Pastelería fina y creativa</p>
+        <p>✔ Repostería tradicional y moderna</p>
+        <p>✔ Café orgánico y bebidas calientes</p>
+      </div>
+    </div>
+
+    <div class="work-experience">
+      <h2 class="text-center">Nuestra Historia</h2>
+      <div class="experience-title">
+        <div>
+          <h3>Fundación</h3>
+          <h4>El comienzo</h4>
+        </div>
+        <div>
+          <h3>2012</h3>
+        </div>
+      </div>
+      <div class="experience-summary">
+        <p>Nacimos como un pequeño negocio familiar...</p>
+      </div>
+
+      <div class="experience-title">
+        <div>
+          <h3>Expansión</h3>
+          <h4>Nuevos productos</h4>
+        </div>
+        <div>
+          <h3>2017</h3>
+        </div>
+      </div>
+      <div class="experience-summary">
+        <p>Ampliamos nuestro menú con opciones veganas, integrales y sin gluten...</p>
+        <ul>
+          <li>Pastelería vegana e inclusiva</li>
+          <li>Alianzas con productores locales</li>
+          <li>Certificación artesanal</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT PARA MOSTRAR EL MENÚ -->
+  <script>
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("active");
+    }
+  </script>
+
+</body>
+</html>

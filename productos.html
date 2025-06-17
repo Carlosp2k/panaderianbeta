@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panadería Dulce Hogar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #FFF8E7;
+      color: #333;
+    }
+
+    nav {
+      background-color: #8B4513;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav .logo {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    nav ul li a:hover {
+      background-color: #A0522D;
+    }
+
+    header {
+      text-align: center;
+      background-color: #D2691E;
+      color: white;
+      padding: 20px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .categoria {
+      margin: 40px auto 20px;
+      max-width: 1100px;
+      font-size: 22px;
+      color: #8B4513;
+      font-weight: bold;
+      border-left: 8px solid #D2691E;
+      padding-left: 12px;
+    }
+
+    .productos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto 40px;
+    }
+
+    .producto {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      width: 240px;
+      text-align: center;
+      transition: transform 0.2s ease;
+      padding-bottom: 15px;
+      position: relative;
+    }
+
+    .producto:hover {
+      transform: translateY(-5px);
+    }
+
+    .producto img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .producto h3 {
+      margin: 15px 0 5px;
+      font-size: 18px;
+      color: #5C4033;
+    }
+
+    .producto p {
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* Botones agregar */
+    .producto button {
+      background-color: #D2691E;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-bottom: 10px;
+    }
+    .producto button:hover {
+      background-color: #A0522D;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-style: italic;
+      color: #555;
+      padding-bottom: 30px;
+    }
+
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .producto {
+        width: 90%;
+      }
+    }
+
+    /* Estilos para carrito */
+    #carrito-resumen {
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      width: 320px;
+      max-height: 400px;
+      overflow-y: auto;
+      background: white;
+      border: 2px solid #D2691E;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      padding: 15px;
+      display: none;
+      z-index: 2000;
+    }
+
+    #carrito-resumen h3 {
+      margin-top: 0;
+      color: #8B4513;
+      border-bottom: 2px solid #D2691E;
+      padding-bottom: 5px;
+    }
+
+    #carrito-resumen table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 10px;
+    }
+
+    #carrito-resumen table th,
+    #carrito-resumen table td {
+      padding: 6px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      font-size: 14px;
+    }
+
+    #carrito-resumen table th {
+      color: #5C4033;
+    }
+
+    #carrito-resumen .totales {
+      font-weight: bold;
+      font-size: 16px;
+      color: #5C4033;
+      margin-top: 10px;
+    }
+
+    #cerrar-carrito {
+      background-color: #A0522D;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-weight: bold;
+      float: right;
+    }
+    #cerrar-carrito:hover {
+      background-color: #8B4513;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Dulce Hogar</div>
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="#">Productos</a></li>
+    <li><a href="nosotros.html">Nosotros</a></li>
+    <li><a href="contactos.html">Contacto</a></li>
+  </ul>
+</nav>
+
+<header>Panadería Dulce Hogar - Nuestros Productos</header>
+
+<div class="categoria">Más Productos</div>
+<div class="productos">
+  <div class="producto" data-nombre="Pan de Nuez" data-precio="26.00">
+    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" alt="Pan de Nuez">
+    <h3>Pan de Nuez</h3>
+    <p>$26.00</p>
+    <button>Agregar al carrito</button>
+  </div>
+  <div class="producto" data-nombre="Pan de Ajo" data-precio="17.00">
+    <img src="https://1.bp.blogspot.com/-kJK-2rEMj40/W-7MkDM_beI/AAAAAAAAe9s/uansbl6rmPwGw6eFgHfTfafmPSX2cmd_QCLcBGAs/s1600/Pan%2Bde%2Bajo%2B01.jpg" alt="Pan de Ajo">
+    <h3>Pan de Ajo</h3>
+    <p>$17.00</p>
+    <button>Agregar al carrito</button>
+  </div>
+  <div class="producto" data-nombre="Tarta de Frutas" data-precio="35.00">
+    <img src="https://th.bing.com/th/id/OIP.A9YCjOWLNWLGCSIKX19w2wHaE8?rs=1&pid=ImgDetMain" alt="Tarta de Frutas">
+    <h3>Tarta de Frutas</h3>
+    <p>$35.00</p>
+    <button>Agregar al carrito</button>
+  </div>
+  <div class="producto" data-nombre="Galleta de Avena" data-precio="8.00">
+    <img src="https://bing.com/th?id=OSK.09f54577f479cd09f4204dcb40124ca1" alt="Galleta de Avena">
+    <h3>Galleta de Avena</h3>
+    <p>$8.00</p>
+    <button>Agregar al carrito</button>
+  </div>
+  <div class="producto" data-nombre="Brazo de Reina" data-precio="40.00">
+    <img src="https://www.tipicochileno.cl/wp-content/uploads/2021/05/brazo-de-reina-1200-628.jpg" alt="Brazo de Reina">
+    <h3>Brazo de Reina</h3>
+    <p>$40.00</p>
+    <button>Agregar al carrito</button>
+  </div>
+  <div class="producto" data-nombre="Dona Rellena" data-precio="15.00">
+    <img src="https://th.bing.com/th/id/OIP.5SJVrVW3ZVWDZjcTwTuz-gAAAA?rs=1&pid=ImgDetMain" alt="Dona Rellena">
+    <h3>Dona Rellena</h3>
+    <p>$15.00</p>
+    <button>Agregar al carrito</button>
+  </div>
+  <div class="producto" data-nombre="Pan de Queso" data-precio="20.00">
+    <img src="https://th.bing.com/th/id/OIP.jFs_xZeeQE_2El1uAuwfwgHaE8?rs=1&pid=ImgDetMain" alt="Pan de Queso">
+    <h3>Pan de Queso</h3>
+    <p>$20.00</p>
+    <button>Agregar al carrito</button>
+  </div>
+  <div class="producto" data-nombre="Pastel Tres Leches" data-precio="190.00">
+    <img src="https://th.bing.com/th/id/OIP.3KLEvZsjkXoGkte4YO8qDAHaE-?rs=1&pid=ImgDetMain" alt="Pastel Tres Leches">
+    <h3>Pastel Tres Leches</h3>
+    <p>$190.00</p>
+    <button>Agregar al carrito</button>
+  </div>
+  <div class="producto" data-nombre="Tarta de Chocolate" data-precio="38.00">
+    <img src="https://bing.com/th?id=OSK.f862ff5a4e41e7e7216550ad598ede7d" alt="Tarta de Chocolate">
+    <h3>Tarta de Chocolate</h3>
+    <p>$38.00</p>
+    <button>Agregar al carrito</button>
+  </div>
+  <div class="producto" data-nombre="Pan de Mantequilla" data-precio="12.00">
+    <img src="https://th.bing.com/th/id/R.a5a927baeb653250e3637f9c7b50da69?rik=mrvvf93weKZYXw&riu=http%3a%2f%2f3.bp.blogspot.com%2f-KAeD_r5UElA%2fU8euPiEKGII%2fAAAAAAAACJ8%2fcQm-EmCHUL0%2fs1600%2fPan%2bde%2bmantequilla(1).JPG&ehk=0Ohqr85hvL40qxy%2fxl%2b0oojGp3Ta7%2fv62xvsDXnxFcY%3d&risl=&pid=ImgRaw&r=0" alt="Pan de Mantequilla">
+    <h3>Pan de Mantequilla</h3>
+    <p>$12.00</p>
+    <button>Agregar al carrito</button>
+  </div>
+</div>
+
+<footer>¡Todos nuestros productos son frescos y hechos con amor! ❤️</footer>
+
+<!-- Carrito resumen -->
+<div id="carrito-resumen">
+  <button id="cerrar-carrito">Cerrar</button>
+  <h3>Resumen del Carrito</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Cant.</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody id="carrito-items">
+      <!-- Aquí van los productos agregados -->
+    </tbody>
+  </table>
+  <div class="totales">
+    <div>Subtotal: $<span id="subtotal">0.00</span></div>
+    <div>IVA (16%): $<span id="iva">0.00</span></div>
+    <div>Total: $<span id="total">0.00</span></div>
+  </div>
+</div>
+
+<script>
+  const botonesAgregar = document.querySelectorAll('.producto button');
+  const carrito = {};
+  const carritoResumen = document.getElementById('carrito-resumen');
+  const carritoItems = document.getElementById('carrito-items');
+  const subtotalSpan = document.getElementById('subtotal');
+  const ivaSpan = document.getElementById('iva');
+  const totalSpan = document.getElementById('total');
+  const btnCerrar = document.getElementById('cerrar-carrito');
+
+  function formatearPrecio(num) {
+    return num.toFixed(2);
+  }
+
+  function actualizarCarrito() {
+    carritoItems.innerHTML = '';
+
+    let subtotal = 0;
+    for (const nombre in carrito) {
+      const item = carrito[nombre];
+      const subtotalProducto = item.precio * item.cantidad;
+      subtotal += subtotalProducto;
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${nombre}</td>
+        <td>${item.cantidad}</td>
+        <td>$${formatearPrecio(subtotalProducto)}</td>
+      `;
+      carritoItems.appendChild(tr);
+    }
+
+    const iva = subtotal * 0.16;
+    const total = subtotal + iva;
+
+    subtotalSpan.textContent = formatearPrecio(subtotal);
+    ivaSpan.textContent = formatearPrecio(iva);
+    totalSpan.textContent = formatearPrecio(total);
+  }
+
+  botonesAgregar.forEach(boton => {
+    boton.addEventListener('click', () => {
+      const productoDiv = boton.parentElement;
+      const nombre = productoDiv.dataset.nombre;
+      const precio = parseFloat(productoDiv.dataset.precio);
+
+      if (carrito[nombre]) {
+        carrito[nombre].cantidad += 1;
+      } else {
+        carrito[nombre] = { precio: precio, cantidad: 1 };
+      }
+
+      actualizarCarrito();
+      carritoResumen.style.display = 'block';
+    });
+  });
+
+  btnCerrar.addEventListener('click', () => {
+    carritoResumen.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
